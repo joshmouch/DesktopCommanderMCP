@@ -116,7 +116,7 @@ jobs:
   # writes to origin. The .mcpb and the bumped version files cross to the
   # publish job as an artifact — a separate runner shares no filesystem.
   prepare:
-    runs-on: ubuntu-latest
+    runs-on: ai-fleet-amd64
     outputs:
       mode: ${{ steps.mode.outputs.mode }}
       rehearsal: ${{ steps.mode.outputs.rehearsal }}
@@ -370,7 +370,7 @@ jobs:
   # the version, so a re-run never double-publishes.
   publish:
     needs: prepare
-    runs-on: ubuntu-latest
+    runs-on: ai-fleet-amd64
     env:
       MODE: ${{ needs.prepare.outputs.mode }}
       REHEARSAL: ${{ needs.prepare.outputs.rehearsal }}
